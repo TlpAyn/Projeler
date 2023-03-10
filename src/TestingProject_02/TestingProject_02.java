@@ -1,7 +1,7 @@
 package TestingProject_02;
 
-import Utlity.BaseDriver;
-import Utlity.MyFunc;
+import Utility.BaseDriver;
+
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -14,7 +14,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class TestingProject_02 extends BaseDriver {
+public class TestingProject_02 extends BaseDriver
+{
 
     @Test
     public void Test1() {

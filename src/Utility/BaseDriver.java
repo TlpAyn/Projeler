@@ -3,6 +3,7 @@ package Utility;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.edge.EdgeDriver;
 
 import java.time.Duration;
 import java.util.logging.Level;
@@ -21,7 +22,10 @@ public class BaseDriver {
         logger.setLevel(Level.SEVERE);
 
         System.setProperty(ChromeDriverService.CHROME_DRIVER_SILENT_OUTPUT_PROPERTY,"true");
-        driver = new ChromeDriver();
+
+
+//        driver = new ChromeDriver();
+        driver = new EdgeDriver();
 
         driver.manage().window().maximize();
 
