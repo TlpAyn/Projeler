@@ -1,14 +1,12 @@
-package Projeckt_03;
+package TestingProject_03;
 
 import Utility.BaseDriver;
 import Utility.MyFunc;
-import org.checkerframework.checker.units.qual.K;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class TestCase5 extends BaseDriver {
-
+public class TestCase_05 extends BaseDriver {
     @Test
     public void Test5(){
 
@@ -36,8 +34,11 @@ public class TestCase5 extends BaseDriver {
         MyFunc.Bekle(3);
 
 
+
         WebElement SenMessage = driver.findElement(By.id("send_message_button"));
         SenMessage.click();
 
+        MyFunc.Bekle(2);
+        driver.switchTo().alert().accept();
     }
-}
+    }

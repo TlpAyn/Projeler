@@ -1,7 +1,8 @@
-package Projeckt_03;
+package TestingProject_03;
 
 import Utility.BaseDriver;
 import Utility.MyFunc;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -9,16 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class TestCase3 extends BaseDriver {
-
-
-//            Test Case:3
-//            ➢ https://shopdemo.e-junkie.com/ sitesine gidiniz
-//            ➢ E-book add to cart butonuna tıklatınız.
-//            ➢ Pay using debit card a tıklatınız.
-//            ➢ Card numarasına “1111 1111 1111 1111” giriniz
-//            ➢ “Your card number is invalid” mesajının görüldüğünü doğrulayınız.
-
+public class TestCase_03 extends BaseDriver {
 
     @Test
     public void Test1() {
@@ -43,9 +35,9 @@ public class TestCase3 extends BaseDriver {
         WebElement Debit = driver.findElement(By.xpath("//button[@class='Payment-Button CC']"));
         Debit.click();
 
-MyFunc.Bekle(1);
-        WebElement iframe2= driver.findElement(By.xpath("//iframe[@title='Sicherer Eingaberahmen für Kartenzahlungen']"));
-        driver.switchTo().frame(iframe2);
+
+        WebElement iframeIKi= driver.findElement(By.xpath("//iframe[@title='Sicherer Eingaberahmen für Kartenzahlungen']"));
+        driver.switchTo().frame(iframeIKi);
 
         MyFunc.Bekle(1);
 
@@ -53,13 +45,16 @@ MyFunc.Bekle(1);
         WebElement KartNumaraBoslugu  = driver.findElement(By.xpath("//*[@id=\"root\"]/form/div/div[2]/span[1]/span[2]/div/div[2]/span/input"));
         KartNumaraBoslugu.sendKeys("1111 1111 1111 1111");
 
+        MyFunc.Bekle(1);
 
-        //span[text()='Kart numaranız geçersiz.']
+        driver.switchTo().parentFrame();
 
-        //div[@class='CardNumberField-input-wrapper']//input
+        WebElement UngultigYazisi  = driver.findElement(By.xpath("  //span[text()='Ihre Kartennummer ist ungültig.']"));
 
-//        WebElement Pay = driver.findElement(By.xpath("//button[@class='Pay-Button']"));
-//        Pay.click();
-//}
-}
+
+
+        Assert.assertEquals(UngultigYazisi.getText(),"Ihre Kartennummer ist ungültig.");
+
+
+    }
 }
